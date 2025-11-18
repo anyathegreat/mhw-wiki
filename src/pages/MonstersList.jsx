@@ -1,4 +1,4 @@
-import { monstersList } from "../moxkData";
+import { monstersList } from "../mockData";
 import { Grid } from "@mantine/core";
 
 import MonsterCard from "../components/MonsterCard";
