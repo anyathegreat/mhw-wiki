@@ -1,11 +1,16 @@
-import { Stack } from "@mantine/core";
-import { Link } from "react-router";
+import { monstersList } from "../mockData";
+import { Grid } from "@mantine/core";
+
+import MonsterCard from "../components/MonsterCard";
 
 export default function MonstersList() {
   return (
-    <Stack>
-      <Link to="1">Монстер 1</Link>
-      <Link to="2">Монстер 2</Link>
-    </Stack>
+    <Grid gutter="lg" px={{ base: "sm", sm: "lg" }}>
+      {monstersList.map((item) => (
+        <Grid.Col span={{ base: 12, md: 6, lg: 3 }} key={item.id}>
+          <MonsterCard name={item.name} id={item.id} />
+        </Grid.Col>
+      ))}
+    </Grid>
   );
 }
