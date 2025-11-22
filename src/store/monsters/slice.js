@@ -1,5 +1,6 @@
-import { monstersList } from "@/mockData";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import { monstersList } from "@/mockData";
 
 export const getMonsters = createAsyncThunk(
   "monsters/getMonsters",

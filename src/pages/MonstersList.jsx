@@ -8,6 +8,7 @@ import MonsterCard from "@/components/MonsterCard";
 
 export default function MonstersList() {
   const dispatch = useDispatch();
+
   const monsters = useSelector(selectMonstersList);
 
   useEffect(() => {

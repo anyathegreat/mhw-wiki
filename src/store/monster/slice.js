@@ -31,6 +31,7 @@ const monsterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getMonster.pending, (state) => {
+        state.item = {};
         state.loading += 1;
       })
       .addCase(getMonster.fulfilled, (state, action) => {
