@@ -11,7 +11,7 @@ export default function Header({ opened, toggle }) {
       matches
         .filter((match) => Boolean(match.handle?.crumb))
         .map((match) => {
-          console.log(match);
+          // console.log(match);
           const crumbGenerator = match.handle.crumb;
 
           return {
