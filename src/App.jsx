@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { MantineProvider } from "@mantine/core";
+import { Provider as ReduxProvider } from "react-redux";
 
 import MonstersList from "@/pages/MonstersList";
 import MonsterDetails from "@/pages/MonsterDetails";
 import HomePage from "@/pages/HomePage";
 import AppLayout from "@/layouts/AppLayout";
+
+import { store } from "./store";
 
 import "@mantine/core/styles.css";
 
@@ -29,9 +32,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <MantineProvider defaultColorScheme="dark">
-      <RouterProvider router={router}></RouterProvider>
-    </MantineProvider>
+    <ReduxProvider store={store}>
+      <MantineProvider defaultColorScheme="dark">
+        <RouterProvider router={router}></RouterProvider>
+      </MantineProvider>
+    </ReduxProvider>
   );
 }
 
