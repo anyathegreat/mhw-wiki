@@ -12,8 +12,10 @@ export default function MonsterDetails() {
   const monster = useSelector((state) => state.monster.item);
 
   useEffect(() => {
-    dispatch(getMonster(id));
-  }, [dispatch]);
+    if (id) {
+      dispatch(getMonster(id));
+    }
+  }, [id, dispatch]);
 
   return (
     <>

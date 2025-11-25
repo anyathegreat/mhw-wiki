@@ -1,19 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { monstersList } from "@/mockData";
+import { monstersService } from "@/service/monstersService";
 
-export const getMonsters = createAsyncThunk(
-  "monsters/getMonsters",
-  async (_, { fulfillWithValue, rejectWithValue }) => {
-    const response = await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve(monstersList);
-      }, 3000),
-    );
-
-    return fulfillWithValue(response);
-  },
-);
+export const getMonsters = createAsyncThunk("monsters/getMonsters", async (_, { rejectWithValue }) => {
+  try {
+    const response = await monstersService.getAllMonsters();
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
 
 const initialState = {
   list: [],
