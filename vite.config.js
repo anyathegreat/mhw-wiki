@@ -11,7 +11,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/",
+  base: "/mhw-wiki/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
