@@ -13,7 +13,7 @@ export default function MonsterDetails() {
 
   useEffect(() => {
     dispatch(getMonster(id));
-  }, [dispatch]);
+  }, [id, dispatch]);
 
   return (
     <>

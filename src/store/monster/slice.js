@@ -1,21 +1,16 @@
-import { monstersList } from "@/mockData";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const getMonster = createAsyncThunk("monster/getMonster", async (id, { fulfillWithValue, rejectWithValue }) => {
-  const response = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const monster = monstersList.find((item) => Number(item.id) === Number(id));
+import { monstersService } from "@/service/monstersService";
+import { router } from "@/router";
 
-      if (!monster) reject({ message: "Monster not found" });
-      resolve(monster);
-    }, 3000);
-  })
-    .then((value) => fulfillWithValue(value))
-    .catch((error) => {
-      return rejectWithValue(error.message);
-    });
-
-  return response;
+export const getMonster = createAsyncThunk("monster/getMonster", async (id, { rejectWithValue }) => {
+  try {
+    const response = await monstersService.getMonster(id);
+    return response.data;
+  } catch (error) {
+    router.navigate("/monsters/not-found", { replace: true });
+    return rejectWithValue(error.message);
+  }
 });
 
 const initialState = {

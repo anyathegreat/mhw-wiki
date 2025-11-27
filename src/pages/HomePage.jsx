@@ -1,4 +1,4 @@
-import { Title, Text, Card, SimpleGrid } from "@mantine/core";
+import { Title, Text } from "@mantine/core";
 
 export default function HomePage() {
   return (
