@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 
-import MonstersList from "@/pages/MonstersList";
-import MonsterDetails from "@/pages/MonsterDetails";
-import HomePage from "@/pages/HomePage";
-import AppLayout from "@/layouts/AppLayout";
+import MonstersList from "./pages/MonstersList";
+import MonsterDetails from "./pages/MonsterDetails";
+import HomePage from "./pages/HomePage";
+import AppLayout from "./layouts/AppLayout";
 import NotFoundPage from "./pages/NotFoundPage";
 
 export const router = createBrowserRouter([
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         handle: { crumb: "Монстры" },
         children: [
           { index: true, Component: MonstersList },
-          { path: "not-found", Component: NotFoundPage, handle: { crumb: `Not Found` } },
+          { path: "not-found", Component: NotFoundPage, handle: { crumb: "Not Found" } },
           {
             path: ":id",
             Component: MonsterDetails,

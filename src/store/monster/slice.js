@@ -8,7 +8,7 @@ export const getMonster = createAsyncThunk("monster/getMonster", async (id, { re
     const response = await monstersService.getMonster(id);
     return response.data;
   } catch (error) {
-    router.navigate("/monsters/not-found");
+    router.navigate("/monsters/not-found", { replace: true });
     return rejectWithValue(error.message);
   }
 });

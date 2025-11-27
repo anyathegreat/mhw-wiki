@@ -1,8 +1,8 @@
 import { AxiosClient } from "./axiosClient";
 
 class MonstersService extends AxiosClient {
-  constructor() {
-    super("https://mhw-db.com");
+  constructor(baseURL) {
+    super(baseURL);
   }
 
   async getAllMonsters() {
@@ -16,4 +16,4 @@ class MonstersService extends AxiosClient {
   }
 }
 
-export const monstersService = new MonstersService();
+export const monstersService = new MonstersService("https://mhw-db.com");
