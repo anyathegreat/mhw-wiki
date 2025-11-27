@@ -1,20 +1,19 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RouterProvider } from "react-router/dom";
+import { MantineProvider } from "@mantine/core";
+import { Provider as ReduxProvider } from "react-redux";
 
-import Home from "./pages/Home";
-import MonstersList from "./pages/MonstersList";
-import MonsterDetails from "./pages/MonsterDetails";
+import { router } from "./router";
+import { store } from "./store";
 
-import "./App.css";
+import "@mantine/core/styles.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/monsters" element={<MonstersList />} />
-        <Route path="/monsters/:id" element={<MonsterDetails />} />
-        <Route index element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <ReduxProvider store={store}>
+      <MantineProvider defaultColorScheme="dark">
+        <RouterProvider router={router}></RouterProvider>
+      </MantineProvider>
+    </ReduxProvider>
   );
 }
 
