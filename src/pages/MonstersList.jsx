@@ -5,15 +5,19 @@ import { Grid } from "@mantine/core";
 import { getMonsters } from "@/store/monsters/slice";
 import { selectMonstersList } from "@/store/monsters/selector";
 import MonsterCard from "@/components/MonsterCard";
+import SkeletonCard from "@/components/SkeletonCard";
 
 export default function MonstersList() {
   const dispatch = useDispatch();
 
   const monsters = useSelector(selectMonstersList);
+  const { loading } = useSelector((state) => state.monsters);
 
   useEffect(() => {
     dispatch(getMonsters());
   }, [dispatch]);
+
+  if (loading) return <SkeletonCard skeletonCount={30} />;
 
   return (
     <Grid gutter="lg" px={{ base: "sm", sm: "lg" }}>
